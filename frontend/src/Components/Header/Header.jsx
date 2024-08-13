@@ -1,9 +1,14 @@
 import "./style.css";
 
+const mockName = "Garrett Hunt";
+const mockUscfId = "30269749";
+
 export const Header = () => {
   return (
-    <header>
+    <div className="header">
       <h1>USCF Stats</h1>
-    </header>
+      <h2>{mockName}</h2>
+      <h2>USCF ID: {mockUscfId}</h2>
+    </div>
   );
 };

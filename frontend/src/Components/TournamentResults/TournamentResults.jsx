@@ -34,23 +34,25 @@ const mockTournamentResults = [
 
 export const TournamentResults = () => {
   return (
-    <table>
-      <tbody>
-        <tr>
-          <th>End Date</th>
-          <th>Tournament Name</th>
-          <th>Rating</th>
-        </tr>
-        {mockTournamentResults.map((tournament) => (
-          <tr key={tournament.id}>
-            <td>{tournament.endDate}</td>
-            <td>
-              <a href={tournament.hyperlink}>{tournament.name}</a>
-            </td>
-            <td>{tournament.rating}</td>
+    <div className="container">
+      <table>
+        <tbody>
+          <tr>
+            <th>End Date</th>
+            <th>Tournament Name</th>
+            <th>Rating</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+          {mockTournamentResults.map((tournament) => (
+            <tr key={tournament.id}>
+              <td>{tournament.endDate}</td>
+              <td>
+                <a href={tournament.hyperlink}>{tournament.name}</a>
+              </td>
+              <td>{tournament.rating}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };

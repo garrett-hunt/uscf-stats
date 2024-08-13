@@ -1,11 +1,20 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
 table {
   display: flex;
   justify-content: center;
   border-collapse: collapse;
+  border-radius: 1rem;
+  overflow: hidden;
+  width: fit-content;
 }
 
 th {
   background-color: rgb(0, 110, 255);
+  border-top: none;
 }
 
 th,
