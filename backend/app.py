@@ -1,5 +1,50 @@
+from flask import Flask, jsonify
 import requests
 from bs4 import BeautifulSoup
+
+app = Flask(__name__)
+
+@app.route("/api/id")
+def id():
+    return get_id(soup)
+
+@app.route("/api/name")
+def name():
+    return get_name(soup)
+
+# @app.route("/api/id")
+# def id():
+#     result = get_id(soup)
+#     return result
+
+# @app.route("/api/id")
+# def id():
+#     result = get_id(soup)
+#     return result
+
+# @app.route("/api/id")
+# def id():
+#     result = get_id(soup)
+#     return result
+
+# @app.route("/api/id")
+# def id():
+#     result = get_id(soup)
+#     return result
+
+def get_id(soup):
+    id_cell = soup.find('font')
+    if id_cell:
+        id = id_cell.get_text()[0:8]
+        return id
+    return None
+
+def get_name(soup):
+    name_cell = soup.find('font')
+    if name_cell:
+        name = name_cell.get_text()[10:]
+        return jsonify({"name": name})
+    return None
 
 def get_page_count(soup):
     pagination = soup.find_all('nobr')
@@ -41,8 +86,8 @@ def get_page_data(soup, classical_results, quick_results, blitz_results, online_
     get_column_data(soup, blitz_results, online_blitz_results, 2)
 
 
-uscf_id = '15437654'
-base_url = f'https://www.uschess.org/msa/MbrDtlTnmtHst.php?{uscf_id}'
+id = '12743305'
+base_url = f'https://www.uschess.org/msa/MbrDtlTnmtHst.php?{id}'
 first_page_url = requests.get(base_url).text
 soup = BeautifulSoup(first_page_url, 'lxml')
 
@@ -55,5 +100,5 @@ for page in range(2, pageCount + 1):
     next_soup = BeautifulSoup(page_content, 'lxml')
     get_page_data(next_soup, classical_results, quick_results, blitz_results, online_classical_results, online_quick_results, online_blitz_results)
 
-for i in classical_results:
-    print(i)
+if __name__ == "__app__":
+    app.run(debug=True)
