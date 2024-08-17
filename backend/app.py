@@ -12,26 +12,6 @@ def id():
 def name():
     return get_name(soup)
 
-# @app.route("/api/id")
-# def id():
-#     result = get_id(soup)
-#     return result
-
-# @app.route("/api/id")
-# def id():
-#     result = get_id(soup)
-#     return result
-
-# @app.route("/api/id")
-# def id():
-#     result = get_id(soup)
-#     return result
-
-# @app.route("/api/id")
-# def id():
-#     result = get_id(soup)
-#     return result
-
 def get_id(soup):
     id_cell = soup.find('font')
     if id_cell:
